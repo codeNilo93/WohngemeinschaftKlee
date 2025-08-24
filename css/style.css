@@ -1,0 +1,184 @@
+
+        /* Global styles */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #f9fafb;
+            --text-color: #1f2937;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header and Footer Common Styling */
+        .header, .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            z-index: 1000;
+        }
+
+        /* Header specific styling */
+        .header {
+            top: 0;
+            background-color: #fff;
+        }
+
+        /* Footer specific styling */
+        .footer {
+            bottom: 0;
+            margin-top: auto; /* Pushes the footer to the bottom */
+            background-color: #fff;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            /* Use Flexbox to align the logo image and text */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Main navigation menu */
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger button for mobile */
+        .hamburger {
+            display: none; /* Hide by default on desktop */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            position: relative;
+            z-index: 1001; /* Ensure it's above the menu */
+        }
+
+        .hamburger-icon,
+        .hamburger-icon::before,
+        .hamburger-icon::after {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-icon::before,
+        .hamburger-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .hamburger-icon::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger-icon::after {
+            transform: translateY(8px);
+        }
+
+        /* State for when the menu is active/open */
+        .hamburger.active .hamburger-icon {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-icon::before {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-icon::after {
+            transform: rotate(-90deg) translateX(8px);
+        }
+        
+        /* Mobile menu styling */
+        @media (max-width: 768px) {
+            .header, .footer {
+                flex-wrap: wrap;
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu on mobile */
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+                background-color: #fff;
+                padding: 1rem 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                /* Hide the menu by default and animate it in */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+
+            .nav-menu.active {
+                max-height: 500px; /* A value large enough to fit all menu items */
+            }
+
+            .nav-menu li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            /* Main content mobile styling */
+            .content-container {
+                flex-direction: column; /* Stack items on mobile */
+            }
+        }
+
+        /* Main content layout styling */
+        .content-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-top: 2rem;
+        }
+
+        .text-section {
+            flex: 1;
+        }
+
+        .image-section {
+            flex-shrink: 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
