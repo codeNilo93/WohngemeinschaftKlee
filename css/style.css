@@ -182,3 +182,124 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        /* Mögliche Ergänzung in deiner style.css */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    font-family: var(--font-family);
+}
+
+.contact-form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #2563eb; /* Ein etwas dunklerer Blauton */
+}
+
+/* CSS für den aktiven Navigationslink */
+.nav-menu li a:hover,
+.nav-menu li.active a { /* Annahme: Du fügst eine .active-Klasse zum li-Element hinzu */
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* =================================
+   Kontaktseite Layout
+   ================================= */
+
+/* Hauptcontainer für Formular und Karte */
+.contact-container {
+    display: flex; /* Aktiviert Flexbox */
+    flex-wrap: wrap; /* Erlaubt den Umbruch auf kleinen Bildschirmen */
+    gap: 2rem; /* Abstand zwischen Formular und Karte */
+    margin-top: 2rem;
+}
+
+/* Bereich für das Formular */
+.form-section {
+    flex: 1; /* Nimmt den verfügbaren Platz ein */
+    min-width: 300px; /* Mindestbreite, bevor es umbricht */
+}
+
+/* Bereich für die Karte */
+.map-section {
+    flex: 1; /* Nimmt ebenfalls den verfügbaren Platz ein */
+    min-width: 300px;
+    display: flex; /* Stellt sicher, dass die Karte den Container ausfüllt */
+}
+
+/* Styling für das iframe der Karte */
+.map-section iframe {
+    width: 100%; /* Füllt die Breite des map-section Containers */
+    height: 100%; /* Füllt die Höhe des map-section Containers */
+    border-radius: 8px; /* Passt zum Design der Eingabefelder */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling für die Formulargruppen für besseren Abstand */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* =================================
+   Layout für die Hauptseite (Home)
+   ================================= */
+
+.home-intro-layout {
+    flex-direction: column; /* Ändert die Anordnung von horizontal zu vertikal */
+    align-items: center;   /* Zentriert die Elemente horizontal */
+}
+
+/* Optional: Text im Text-Abschnitt zentrieren */
+.home-intro-layout .text-section {
+    text-align: center; /* Zentriert die Überschrift und Absätze */
+    max-width: 800px;   /* Begrenzt die Breite für bessere Lesbarkeit */
+}
+
+/* Optional: Dem Bild einen größeren Abstand nach unten geben */
+.home-intro-layout .image-section {
+    margin-bottom: 1rem;
+}
+
+/* =================================
+   Layout für die "Über Uns"-Seite
+   ================================= */
+
+/* Container für die zwei Bilder nebeneinander */
+.dual-image-container {
+    display: flex;             /* Aktiviert Flexbox für die Nebeneinander-Anordnung */
+    justify-content: center;   /* Zentriert die Bilder im Container */
+    flex-wrap: wrap;           /* Bilder rutschen auf Mobilgeräten untereinander */
+    gap: 2rem;                 /* Abstand zwischen den Bildern */
+    width: 100%;               /* Nimmt die volle Breite des Eltern-Containers ein */
+    margin-bottom: 2rem;       /* Abstand zum Text darunter */
+}
+
+/* Sorgt dafür, dass die Bilder im dual-image-container flexibel sind */
+.dual-image-container .image-section {
+    flex: 1;                  /* Lässt die Bilder wachsen, um den Platz zu füllen */
+    min-width: 300px;         /* Mindestbreite, bevor sie in die nächste Zeile umbrechen */
+    max-width: 500px;         /* Verhindert, dass die Bilder auf großen Bildschirmen zu breit werden */
+}
+
+/* Eine sanfte Trennlinie für bessere visuelle Struktur */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;      /* Eine helle, unaufdringliche Farbe */
+    margin: 4rem auto;        /* Großer vertikaler Abstand und zentriert die Linie */
+    width: 80%;
+}

@@ -27,10 +27,10 @@
         <!-- Navigation Menu -->
         <nav>
             <ul class="nav-menu">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="/ueber-uns.html">Über Uns</a></li>
-                <li><a href="/Vision.html">Vision</a></li>
-                <li><a href="/contact.html">Kontakt</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="ueber-uns.html">Über Uns</a></li>
+                <li><a href="Vision.html">Vision</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -38,32 +38,47 @@
     <!-- Main Content for demonstration -->
 <main style="padding: 2rem;">
     <h1>Kontakt</h1>
-    <p>Die Kontaktseite, noch richtig fett Work in Progress.</p>
-    
-    <form action="/submit-form" method="post" class="contact-form">
+    <p>Hier können Sie uns eine Nachricht hinterlassen oder unseren Standort einsehen.</p>
+
+    <!-- Neuer Container für Formular und Karte -->
+    <div class="contact-container">
+        
+        <!-- Linke Seite: Das Formular -->
+<div class="form-section">
+    <form class="contact-form" id="contact-form">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" >
+            <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
             <label for="phone">Telefon:</label>
-            <input type="tel" id="phone" name="phone" >
+            <input type="tel" id="phone" name="phone">
         </div>
         <div class="form-group">
             <label for="email">E-Mail:</label>
-            <input type="email" id="email" name="email" >
+            <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
             <label for="message">Ihr Anliegen:</label>
-            <textarea id="message" name="message" rows="6" ></textarea>
+            <textarea id="message" name="message" rows="6" required></textarea>
         </div>
         <button type="submit">Senden</button>
     </form>
+    <div id="form-status"></div>
+</div>
+
+        <!-- Rechte Seite: Google Maps -->
+        <div class="map-section">
+            <!-- Hier den KARTIERTEN HTML-Code von Google Maps einfügen -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d734.3688686347734!2d13.751798509791517!3d51.11595442413532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709ce85e9f2442f%3A0xecfe1306d6bee516!2sSteinmetz%20Peer%20Hoffmann!5e0!3m2!1sde!2sde!4v1756642211122!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </div>
 </main>
 
     <!-- Footer Section -->
     <footer class="footer">
-        <a href="#" class="logo">Company</a>
+        <a href="#" class="logo">Wohngemeinschaft Klee</a>
         
         <!-- Hamburger Button for Footer -->
         <button class="hamburger" aria-label="Toggle navigation menu">
