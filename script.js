@@ -1,4 +1,6 @@
 
+// DATA TO SERVER
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
@@ -37,6 +39,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 });
+
+// Frontend specific Functions
         // Select all hamburger buttons and navigation menus
         
         
