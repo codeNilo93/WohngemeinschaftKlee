@@ -1,10 +1,16 @@
 
         /* Global styles */
         :root {
+            /* TODO: FARBVERLAUF */
+            /* TODO: Überschrift Seite Header Grün */
             --primary-color: #3b82f6;
-            --secondary-color: #f9fafb;
+            --secondary-color: #e7d7be;
             --text-color: #1f2937;
             --font-family: 'Poppins', sans-serif;
+        }
+
+        background {
+            color: red;
         }
 
         body {
