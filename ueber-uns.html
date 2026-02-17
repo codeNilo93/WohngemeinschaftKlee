@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/slide.css">
 </head>
+
 <body>
 
     <!-- Header Section -->
@@ -88,6 +90,32 @@ Die Teilhabe und Verantwortung teilt sich über viele Schultern auf, und viele d
                 <img src="pictures/kueche.jpeg"  alt="Platzhalterbild unserer Gemeinschaft.">
             </div>
         </div>
+
+        <div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <img src="pictures/gruppenbild.jpeg" width="600" height="400">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="pictures/backen.jpg" width="600" height="400">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="pictures/lueder_gemuese.jpg" width="600" height="400">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div class="dot-container">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
 </main>
 
     <!-- Footer Section -->
@@ -110,6 +138,7 @@ Die Teilhabe und Verantwortung teilt sich über viele Schultern auf, und viele d
     </footer>
 
 <script src="js/script.js"></script>
+<script src="js/slide.js"></script>
 
 </body>
 </html>
