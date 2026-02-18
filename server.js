@@ -1,60 +1,73 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+// Load environment variables if you want to be secure (optional but recommended)
+// require('dotenv').config(); 
+
 const app = express();
 const port = 3000;
 
-// Middleware to parse form data from HTML
+// Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Serve static HTML files (like your index.html)
 app.use(express.static('public')); 
 
-// POST route to handle the form submission
 app.post('/send-email', async (req, res) => {
-    const { topic, phone, message, senderEmail } = req.body;
+    console.log("HELLO THERE")
+    // 1. Match these variables to your HTML form names!
+    const { name, email, phone, message } = req.body;
 
-    // --- GENERIC EMAIL CONFIGURATION (Start) ---
-    // currently using Ethereal for testing
-    let testAccount = await nodemailer.createTestAccount();
-
+    // 2. Outlook / Office 365 Configuration
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, 
+        host: "smtp.office365.com", // Official Outlook/Office365 host
+        port: 587,                  // Standard secure port
+        secure: false,              // False for port 587 (uses STARTTLS)
         auth: {
-            user: testAccount.user, 
-            pass: testAccount.pass, 
+            user: "klee-wghdresden@outlook.de", // Your email address
+            pass: "YOUR_APP_PASSWORD"               // Your App Password (see notes below)
         },
+        tls: {
+            ciphers: 'SSLv3' // Sometimes needed for Outlook to work reliably
+        }
     });
-    // --- GENERIC EMAIL CONFIGURATION (End) ---
 
     try {
-        // Send the email
+        // 3. Send the email
         let info = await transporter.sendMail({
-            from: '"Website Contact Form" <no-reply@yourdomain.com>', 
-            to: "admin@yourcompany.com", // THE HARDCODED RECEIVER EMAIL
-            subject: `New Contact Request: ${topic}`, 
+            from: '"WG Klee Website" <YOUR_OUTLOOK_EMAIL@outlook.com>', // MUST be same as auth.user
+            to: "klee-wghdresden@outlook.de", // Where you want to receive the notification
+            subject: `Neue Kontaktanfrage von ${name}`, 
             html: `
-                <h3>New Message Received</h3>
-                <p><strong>Topic:</strong> ${topic}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Sender Email:</strong> ${senderEmail}</p>
+                <h3>Neue Nachricht via WG Kleeblatt</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Telefon:</strong> ${phone}</p>
                 <br>
-                <p><strong>Message:</strong></p>
+                <p><strong>Nachricht:</strong></p>
                 <p>${message}</p>
             `,
         });
 
         console.log("Message sent: %s", info.messageId);
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-
-        // Send a success response back to the browser
-        res.send(`<h1>Email sent successfully!</h1><a href="/">Go back</a>`);
+        
+        // Simple success response
+        res.send(`
+            <div style="font-family: sans-serif; text-align: center; padding: 50px;">
+                <h1 style="color: green;">Nachricht erfolgreich gesendet!</h1>
+                <p>Vielen Dank, wir melden uns bald bei Ihnen.</p>
+                <a href="/contact.html" style="text-decoration: none; background: #3b82f6; color: white; padding: 10px 20px; border-radius: 5px;">Zurück zur Seite</a>
+            </div>
+        `);
         
     } catch (error) {
-        console.error(error);
-        res.status(500).send("Error sending email");
+        console.error("Error sending email:", error);
+        res.status(500).send(`
+            <div style="font-family: sans-serif; text-align: center; padding: 50px;">
+                <h1 style="color: red;">Fehler beim Senden</h1>
+                <p>Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</p>
+                <p>Error details: ${error.message}</p>
+                <a href="/contact.html">Zurück</a>
+            </div>
+        `);
     }
 });
 

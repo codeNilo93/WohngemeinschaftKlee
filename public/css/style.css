@@ -1,16 +1,11 @@
 
         /* Global styles */
         :root {
-            /* TODO: FARBVERLAUF */
-            /* TODO: Überschrift Seite Header Grün */
-            --primary-color: #3b82f6;
-            --secondary-color: #e7d7be;
+            --primary-color: #a3b18a;
+            --secondary-color: #a3b18a;
             --text-color: #1f2937;
             --font-family: 'Poppins', sans-serif;
-        }
-
-        background {
-            color: red;
+            
         }
 
         body {
@@ -22,6 +17,24 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            background-color: #a3b18a;
+
+    /* Der Mesh-Effekt durch übereinandergelegte radiale Verläufe */
+        background-image:
+        /* 1. Großes weiches Licht von oben links (helles Mint) */
+        radial-gradient(at 20% 20%, rgba(237, 242, 236, 0.7) 0px, transparent 60%),
+
+        /* 2. Tiefere, dunklere Zone unten rechts (Moosgrün) */
+        radial-gradient(at 85% 85%, rgba(85, 107, 79, 0.5) 0px, transparent 50%),
+
+        /* 3. Ein ganz dezenter warmer Akzent unten links (Sand) */
+        radial-gradient(at 0% 100%, rgba(230, 213, 195, 0.3) 0px, transparent 40%);
+
+    /* WICHTIG: Damit der Hintergrund beim Scrollen stehen bleibt und nicht kachelt */
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
         }
 
         /* Header and Footer Common Styling */
@@ -38,14 +51,14 @@
         /* Header specific styling */
         .header {
             top: 0;
-            background-color: #fff;
+            background-color: #343434;
         }
 
-        /* Footer specific styling */
+
         .footer {
             bottom: 0;
-            margin-top: auto; /* Pushes the footer to the bottom */
-            background-color: #fff;
+            margin-top: auto;
+            background-color:  #1f2937;
         }
 
         .logo {
