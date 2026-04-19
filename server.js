@@ -18,23 +18,18 @@ app.post('/send-email', async (req, res) => {
 
     // 2. Outlook / Office 365 Configuration
     let transporter = nodemailer.createTransport({
-        host: "smtp.office365.com", // Official Outlook/Office365 host
-        port: 587,                  // Standard secure port
-        secure: false,              // False for port 587 (uses STARTTLS)
+        service: "gmail",
         auth: {
-            user: "klee-wghdresden@outlook.de", // Your email address
-            pass: "YOUR_APP_PASSWORD"               // Your App Password (see notes below)
-        },
-        tls: {
-            ciphers: 'SSLv3' // Sometimes needed for Outlook to work reliably
+            user: "Daniloblub330@gmail.com", // Your email address
+            pass: "izyq yxqj lkbr phiq"               // Your App Password (see notes below)
         }
     });
 
-    try {
+try {
         // 3. Send the email
         let info = await transporter.sendMail({
-            from: '"WG Klee Website" <YOUR_OUTLOOK_EMAIL@outlook.com>', // MUST be same as auth.user
-            to: "klee-wghdresden@outlook.de", // Where you want to receive the notification
+            from: '"WG Klee Website" <Daniloblub330@gmail.com>', // MUST be same as auth.user
+            to: "Daniloblub330@gmail.com", // Where you want to receive the notification
             subject: `Neue Kontaktanfrage von ${name}`, 
             html: `
                 <h3>Neue Nachricht via WG Kleeblatt</h3>
@@ -49,25 +44,18 @@ app.post('/send-email', async (req, res) => {
 
         console.log("Message sent: %s", info.messageId);
         
-        // Simple success response
-        res.send(`
-            <div style="font-family: sans-serif; text-align: center; padding: 50px;">
-                <h1 style="color: green;">Nachricht erfolgreich gesendet!</h1>
-                <p>Vielen Dank, wir melden uns bald bei Ihnen.</p>
-                <a href="/contact.html" style="text-decoration: none; background: #3b82f6; color: white; padding: 10px 20px; border-radius: 5px;">Zurück zur Seite</a>
-            </div>
-        `);
+        // NEU: Wir senden ein JSON-Objekt mit einer Erfolgsnachricht zurück
+        res.status(200).json({ 
+            message: "Nachricht erfolgreich gesendet! Wir melden uns bald bei Ihnen." 
+        });
         
     } catch (error) {
         console.error("Error sending email:", error);
-        res.status(500).send(`
-            <div style="font-family: sans-serif; text-align: center; padding: 50px;">
-                <h1 style="color: red;">Fehler beim Senden</h1>
-                <p>Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</p>
-                <p>Error details: ${error.message}</p>
-                <a href="/contact.html">Zurück</a>
-            </div>
-        `);
+        
+        // NEU: Wir senden ein JSON-Objekt mit einer Fehlernachricht zurück
+        res.status(500).json({ 
+            message: "Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut." 
+        });
     }
 });
 
