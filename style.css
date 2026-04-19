@@ -172,6 +172,11 @@
             flex: 1;
         }
 
+        .text-section-center {
+            flex: 1;
+            text-align: center;
+        }
+
         .image-section {
             flex-shrink: 0;
         }

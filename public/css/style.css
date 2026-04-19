@@ -192,6 +192,13 @@
             flex: 1;
         }
 
+        .text-section-center {
+            flex: 1;
+            text-align: center;
+            font-size:larger;
+
+        }
+
         .image-section {
             flex-shrink: 0;
         }
