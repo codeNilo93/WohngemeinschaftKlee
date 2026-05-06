@@ -39,14 +39,21 @@
         }
 
         /* Header and Footer Common Styling */
+/* Header and Footer Common Styling */
         .header, .footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
             z-index: 1000;
+        }
+
+        /* Der Header bleibt oben fixiert */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: #343434;
         }
 
         /* Header specific styling */
